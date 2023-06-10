@@ -5,6 +5,7 @@ class CreateQuotations < ActiveRecord::Migration[7.0]
       t.string :address
       t.string :city
       t.string :state
+      t.integer :price_per_unit
       # t.string :country
       t.string :pincode
       t.datetime :quotation_date

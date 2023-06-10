@@ -29,13 +29,13 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
         column do
-          panel "Total Revenue (including GST)" do
-            para Quotation.sum(:grand_total)
-          end
-        end
-        column do
           panel "Total GST (C-GST and S-GST)" do
             para Quotation.sum(:c_gst) * 2
+          end
+        end
+         column do
+          panel "Total Revenue (including GST)" do
+            para Quotation.sum(:grand_total)
           end
         end
       end

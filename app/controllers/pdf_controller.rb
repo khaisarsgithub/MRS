@@ -16,6 +16,7 @@ class PdfController < ApplicationController
     @s_gst= @quotation.s_gst
     @c_gst= @quotation.c_gst
     @grand_total= @quotation.grand_total
+    @price_per_unit = @quotation.price_per_unit
     # puts "PDF Generate"
     # puts params
 

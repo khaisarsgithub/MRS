@@ -37,24 +37,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_055050) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "items", force: :cascade do |t|
-    t.string "name"
-    t.integer "width"
-    t.integer "height"
-    t.float "price"
-    t.integer "units"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "quotation_items", force: :cascade do |t|
     t.integer "quotation_id", null: false
-    t.integer "item_id", null: false
+    t.float "width"
+    t.float "height"
+    t.float "units"
     t.integer "quantity"
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_quotation_items_on_item_id"
     t.index ["quotation_id"], name: "index_quotation_items_on_quotation_id"
   end
 
@@ -63,6 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_055050) do
     t.string "address"
     t.string "city"
     t.string "state"
+    t.integer "price_per_unit"
     t.string "pincode"
     t.datetime "quotation_date"
     t.float "total_area"
@@ -76,6 +68,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_055050) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "quotation_items", "items"
   add_foreign_key "quotation_items", "quotations"
 end

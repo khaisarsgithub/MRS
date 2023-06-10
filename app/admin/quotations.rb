@@ -17,8 +17,7 @@ ActiveAdmin.register Quotation do
   menu priority: 2
   filter :name
   filter :is_bill, label: "Billed"
-  permit_params :name, :address, :city, :state, :pincode, :quotation_date, :total_area, :total_units, :is_bill, :total_amt, :s_gst, :c_gst, :grand_total, quotation_items_attributes: [:id, :name, :quantity, :item_id, :quotation_id], items_attributes: [:id, :name, :width, :height, :units, :price]
-
+  permit_params :name, :address, :city, :state, :pincode, :price_per_unit, :quotation_date, :total_area, :total_units, :is_bill, :total_amt, :s_gst, :c_gst, :grand_total, quotation_items_attributes: [:id, :name,:width, :height, :quantity, :item_id, :quotation_id]
   member_action :download do
     # Custom action logic here
     # param1 = params[:param1]
@@ -80,11 +79,14 @@ ActiveAdmin.register Quotation do
       f.input :city
       f.input :state
       f.input :pincode
+      f.input :price_per_unit
       f.input :is_bill
-    # end
-    # f.inputs 'Quotation Items' do
+    end
+    f.inputs 'Quotation Items' do
       f.has_many :quotation_items, heading: 'Items', allow_destroy: true, new_record: 'Add Items' do |qi|
-        qi.input :item, as: :select, collection: Item.all.map { |p| [p.name, p.id] }, include_blank: 'Select Item'
+        # qi.input :item, as: :select, collection: Item.all.map { |p| [p.name, p.id] }, include_blank: 'Select Item'
+        qi.input :width
+        qi.input :height
         qi.input :quantity
       # qi.input :_destroy, as: :boolean, required: false, label: 'Remove', wrapper_html: { class: 'remove-item' }
       end
@@ -104,14 +106,19 @@ ActiveAdmin.register Quotation do
       row "Items" do
         panel "Items" do
           table_for quotation.quotation_items do
-            column :item
+            column :width
+            column :height
+            column :units
             column :quantity
             column :price
           end
         end
       end
       row :total_area
-      row :total_units
+      row "TOTAL QUANTITY" do
+        quotation.total_units
+      end
+      row :price_per_unit
       row :total_amt
       row :c_gst
       row :s_gst

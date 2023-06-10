@@ -132,16 +132,16 @@
             </td>
           </tr>
           <tr>
-            <th style="width: 150px"><h4>Item Name</h4></th>
+            <th style="width: 150px"><h4>Width</h4></th>
             <th style="width: 80px">
               <h4>
-                Unit<br>Price
+                Height
               </h4>
             </th>
-            <th style="width: 80px"><h4>QTY</h4></th>
+            <th style="width: 80px"><h4>Units</h4></th>
             <th style="width: 80px">
               <h4>
-                Units
+                QTY
               </h4>
             </th>
             <th style="width: 140px"><h4>TOTAL</h4></th>
@@ -151,10 +151,10 @@
         <tbody>
           <% @quotation_items.each do |item| %>
           <tr>
-            <td> <%= item.item.name %></td>
-            <td><%= item.item.price %></td>
+            <td> <%= item.width %></td>
+            <td> <%= item.height %></td>
+            <td><%= item.units %></td>
             <td><%= item.quantity %></td>
-            <td><%= item.item.units %></td>
             <td><%= item.price %></td>
           </tr>
         <% end %>
@@ -176,6 +176,14 @@
           </th>
           <td style="vertical-align: top; color: #000">
             <b><%= @total_area %></b>
+          </td>
+        </tr>
+        <tr>
+          <th style="width: 400px">
+            Price Per Unit
+          </th>
+          <td style="vertical-align: top; color: #000">
+            <b><%= @price_per_unit %></b>
           </td>
         </tr>
         <tr>
