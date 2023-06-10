@@ -92,7 +92,7 @@
   </head>
   <body>
     <section class="main-pd-wrapper" style="width: 1000px; margin: auto">
-      <h3 style="margin: 0; text-align: center"> Quotation </h3>
+      <h3 style="text-align: center;"> Bill </h3>
       <table
         class="table table-bordered h4-14"
         style="width: 100%; -fs-table-paginate: paginate; margin-top: 15px"
@@ -166,7 +166,7 @@
       <table class="hm-p table-bordered" style="width: 100%; margin-top: 30px">
         <tr>
           <th style="width: 400px">
-            Total Items
+            Total Quantity
           </th>
           <td style="vertical-align: top; color: #000">
             <b><%= @total_units %></b>
@@ -187,21 +187,66 @@
             <b><%= @price_per_unit %></b>
           </td>
         </tr>
+        <tr>
+          <th style="width: 400px">
+            Total Price
+          </th>
+          <td style="vertical-align: top; color: #000">
+            <b><%= @total_amt %></b>
+          </td>
+        </tr>
+         <tr>
+          <th style="width: 400px">
+            Advance
+          </th>
+          <td style="vertical-align: top; color: #000">
+            <b><%= @advance %></b>
+          </td>
+         </tr>
+          <tr>
+          <th style="width: 400px">
+            Balance
+          </th>
+          <td style="vertical-align: top; color: #000">
+            <b><%= @balance %></b>
+          </td>
+        </tr>
+        <tr>
+          <th style="width: 400px">
+            C-GST
+          </th>
+          <td style="vertical-align: top; color: #000">
+            <b><%= @c_gst %></b>
+          </td>
+        </tr>
+        <tr>
+          <th style="vertical-align: top">S-GST</th>
+          <td style="vertical-align: top; color: #000">
+            <b> <%= @s_gst %></b>
+          </td>
+        </tr>
       </table>
 
       <table class="hm-p table-bordered" style="width: 100%; margin-top: 30px">
         <tr style="background: #fcbd02">
           <th>Total Order Value</th>
-          <td style="width: 150px; text-align: left; border-right: none">
-            <b><%= @total_amt %></b>
+          <td style="width: 150px; text-align: right; border-right: none">
+            <b><%= @grand_total %></b>
           </td>
           <td colspan="5" style="border-left: none"></td>
         </tr>
       </table>
 
       <table style="width: 100%" cellspacing="0" cellspadding="0" border="0">
+        <tr>
           <td>
-            <h4 style="margin: 0; text-align: left">
+            <p>
+              This is computer generated Bill and hence signature is not
+              required
+            </p>
+          </td>
+          <td>
+            <h4 style="margin: 0; text-align: right">
               MRS Enterprises - LLP
             </h4>
           </td>

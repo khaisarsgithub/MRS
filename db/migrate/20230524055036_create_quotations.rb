@@ -13,6 +13,8 @@ class CreateQuotations < ActiveRecord::Migration[7.0]
       t.float :total_units
       t.boolean :is_bill
       t.float :total_amt
+      t.float :advance
+      t.float :balance
       t.float :s_gst
       t.float :c_gst
       t.float :grand_total
@@ -21,3 +23,4 @@ class CreateQuotations < ActiveRecord::Migration[7.0]
     end
   end
 end
+

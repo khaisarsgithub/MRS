@@ -31,6 +31,9 @@ class Quotation < ApplicationRecord
     self.total_area = area
     self.total_units = units
     self.total_amt = price
+    if self.advance
+      self.balance = self.total_amt - self.advance
+    end
     gst = self.total_amt * 0.09
     self.c_gst = gst
     self.s_gst = gst

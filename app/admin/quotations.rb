@@ -17,7 +17,7 @@ ActiveAdmin.register Quotation do
   menu priority: 2
   filter :name
   filter :is_bill, label: "Billed"
-  permit_params :name, :address, :city, :state, :pincode, :price_per_unit, :quotation_date, :total_area, :total_units, :is_bill, :total_amt, :s_gst, :c_gst, :grand_total, quotation_items_attributes: [:id, :name,:width, :height, :quantity, :item_id, :quotation_id]
+  permit_params :name, :address, :city, :state, :pincode, :price_per_unit, :quotation_date, :total_area, :total_units, :is_bill, :total_amt, :advance, :balance, :s_gst, :c_gst, :grand_total, quotation_items_attributes: [:id, :name,:width, :height, :quantity, :item_id, :quotation_id]
   member_action :download do
     # Custom action logic here
     # param1 = params[:param1]
@@ -43,9 +43,11 @@ ActiveAdmin.register Quotation do
     column :pincode
     column :quotation_date
     column :total_area
-    column :total_units
+    column "Total Quantity", :total_units
     column :is_bill
     column :total_amt
+    column :advance
+    column :balance
     column "C-GST", :c_gst
     column "S-GST", :s_gst
     column :grand_total
@@ -57,8 +59,14 @@ ActiveAdmin.register Quotation do
       # item "Quotation ", pdf_generate_path(quotation), method: :pdf
       # item "Create Bill", bill_bill_path(quotation), method: :post
     #end
+
     column 'Download' do |resource|
-      link_to 'Quotation', pdf_generate_path(resource, quotation: resource), method: :pdf
+        # link_to 'Quotation', pdf_generate_path(resource, quotation: resource), method: :pdf
+        # link_to 'Bill', bill_generate_path(resource, quotation: resource), method: :pdf
+        safe_join([
+        link_to("Quotation", pdf_generate_path(resource, quotation: resource), method: :post),
+        link_to("Bill", bill_generate_path(resource, quotation: resource), method: :post)
+      ], tag(:br))
     end
     actions
   end
@@ -91,6 +99,9 @@ ActiveAdmin.register Quotation do
       # qi.input :_destroy, as: :boolean, required: false, label: 'Remove', wrapper_html: { class: 'remove-item' }
       end
     end
+    f.inputs do
+      f.input :advance
+    end
     f.actions
   end
    show do
@@ -120,12 +131,21 @@ ActiveAdmin.register Quotation do
       end
       row :price_per_unit
       row :total_amt
+      row :advance
+      row :balance
       row :c_gst
       row :s_gst
       row :grand_total
-      # panel "Actions" do
-      #  link_to "Download PDF", pdf_generate_path(quotation), method: :post
-      # end
+      panel "Download" do
+       # link_to 'Quotation', pdf_generate_path(resource, quotation: resource), method: :pdf
+       safe_join([
+        link_to("Quotation", pdf_generate_path(resource, quotation: resource), method: :post),
+        link_to("Bill", bill_generate_path(resource, quotation: resource), method: :post)
+      ], tag(:br)) 
+       
+       # link_to 'Bill', bill_generate_path(resource, quotation: resource), method: :pdf
+        
+      end
     end
   end
 end

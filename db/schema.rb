@@ -61,6 +61,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_055050) do
     t.float "total_units"
     t.boolean "is_bill"
     t.float "total_amt"
+    t.float "advance"
+    t.float "balance"
     t.float "s_gst"
     t.float "c_gst"
     t.float "grand_total"
