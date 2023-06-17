@@ -14,7 +14,7 @@ class Quotation < ApplicationRecord
 
   def update_quotation
     if self.quotation_date == nil
-      self.quotation_date = DateTime.now
+      self.quotation_date = Time.zone.now.to_date
     end
     items = self.quotation_items
     area = 0
@@ -22,7 +22,7 @@ class Quotation < ApplicationRecord
     price = 0
     items.each do |item|
       item_area = item.width * item.height * item.quantity
-      item_price = self.price_per_unit * item_area
+      item_price = item.price_per_unit * item_area
       area += item_area
       units += item.quantity
       price += item_price

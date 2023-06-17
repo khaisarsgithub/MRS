@@ -107,14 +107,17 @@
               -webkit-print-color-adjust: exact;
             "
           >
-          <td colspan="7">
-              <h3>To</h3>
+          <td colspan="3">
               <h3><%= @quotation.name %></h3>
-              <p><%= @quotation.address %>, <%= @quotation.city %></p>
-              <p><%= @quotation.state %>, India. <%= @quotation.pincode %></p>
+              <p>Address : <%= @quotation.address %> </p>
+              <p>City : <%= @quotation.city %></p>
+              <p>State : <%= @quotation.state %> </p> 
+              <p>Country : India </p>
+              <p>PinCode : <%= @quotation.pincode %></p>
+              <p>Phone : <%= @quotation.phone %> </p>
               <p>Quotation Date: <%= @quotation_date %></p>
             </td>
-            <td colspan="8">
+            <td colspan="4">
               <h3>
                 MRS Enterprises<br>
                 <p
@@ -128,11 +131,20 @@
                 Ass No.7225/17/2, Survy No.721/C/4, P.No.17/2, <br>
                 Honalli Road, Guggurahatti, Ballari - 583 101. <br>
                 Phone: 9741571372, 9741627403, 7892046870.<br />
+                GST No : 29DCQPS1257E1Z5 <br/> <br/>
+
+Bank Details <br/>
+Bank : HDFC Bank <br/>
+A/c No : 50200072026756 <br/>
+IFSC Code : HDFC0006088 <br/>
+Branch : Brucepet Branch <br/>
+City : Ballari <br/>
                 </p>
               </h3>
             </td>
           </tr>
           <tr>
+            <th style="width: 150px"><h4>Name</h4></th>
             <th style="width: 150px"><h4>Width</h4></th>
             <th style="width: 80px">
               <h4>
@@ -140,6 +152,7 @@
               </h4>
             </th>
             <th style="width: 80px"><h4>Units</h4></th>
+            <th style="width: 80px"><h4>Unit <br> Price </h4></th>
             <th style="width: 80px">
               <h4>
                 QTY
@@ -152,10 +165,12 @@
         <tbody>
           <% @quotation_items.each do |item| %>
           <tr>
+            <td> <%= item.name %></td>
             <td> <%= item.width %></td>
             <td> <%= item.height %></td>
             <td><%= item.units %></td>
             <td><%= item.quantity %></td>
+            <td><%= item.price_per_unit %></td>
             <td><%= item.price %></td>
           </tr>
         <% end %>
@@ -177,14 +192,6 @@
           </th>
           <td style="vertical-align: top; color: #000">
             <b><%= @total_area %></b>
-          </td>
-        </tr>
-        <tr>
-          <th style="width: 400px">
-            Price Per Unit
-          </th>
-          <td style="vertical-align: top; color: #000">
-            <b><%= @price_per_unit %></b>
           </td>
         </tr>
         <tr>

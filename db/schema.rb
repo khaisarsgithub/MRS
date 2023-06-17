@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_24_055050) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_17_220954) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -42,10 +42,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_055050) do
     t.float "width"
     t.float "height"
     t.float "units"
+    t.float "price_per_unit"
     t.integer "quantity"
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["quotation_id"], name: "index_quotation_items_on_quotation_id"
   end
 
@@ -54,9 +56,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_055050) do
     t.string "address"
     t.string "city"
     t.string "state"
-    t.integer "price_per_unit"
     t.string "pincode"
-    t.datetime "quotation_date"
+    t.date "quotation_date"
     t.float "total_area"
     t.float "total_units"
     t.boolean "is_bill"
@@ -68,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_055050) do
     t.float "grand_total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "phone"
   end
 
   add_foreign_key "quotation_items", "quotations"

@@ -5,6 +5,7 @@ class CreateQuotationItems < ActiveRecord::Migration[7.0]
       t.float :width
       t.float :height
       t.float :units
+      t.float :price_per_unit
       t.integer :quantity
       t.float :price
 

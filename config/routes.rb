@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'without_gst/generate'
   post 'bill/generate'
   root 'home#index'
   post 'pdf/generate'

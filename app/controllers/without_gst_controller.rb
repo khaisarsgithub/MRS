@@ -1,4 +1,4 @@
-class PdfController < ApplicationController
+class WithoutGstController < ApplicationController
   def generate
      @id = params[:quotation]
     @quotation = Quotation.find(@id)
@@ -12,16 +12,11 @@ class PdfController < ApplicationController
     @total_area= @quotation.total_area
     @total_units= @quotation.total_units
     @is_bill= @quotation.is_bill
-    @total_amt= @quotation.total_amt
-    @advance = @quotation.advance
-    @balance = @quotation.balance
-    # puts "PDF Generate"
-    # puts params
+    @total_amt= @quotation.total_amt    
 
     filename = @name+ ".pdf"
-    # puts "Quotation: "
-    # puts params[:quotation]
-    html = render_to_string(template: 'pdf/generate')
+
+    html = render_to_string(template: 'without_gst/generate')
     pdf = WickedPdf.new.pdf_from_string(html)
 
     send_data pdf, filename: filename, type: 'application/pdf',

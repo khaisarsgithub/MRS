@@ -92,27 +92,28 @@
   </head>
   <body>
     <section class="main-pd-wrapper" style="width: 1000px; margin: auto">
-      <h3 style="margin: 0; text-align: center"> Quotation </h3>
+      <h3 style="text-align: center;"> Bill </h3>
       <table
         class="table table-bordered h4-14"
         style="width: 100%; -fs-table-paginate: paginate; margin-top: 15px"
       >
         <thead style="display: table-header-group">
           <tr
-             style="
+            style="
               margin: 0;
-              text-align: top;
               background: #fcbd021f;
-              
+              padding: 15px;
               padding-left: 20px;
               -webkit-print-color-adjust: exact;
-              "
-              >
+            "
+          >
           <td colspan="3">
               <h3><%= @quotation.name %></h3>
-              <p>Address: <%= @quotation.address %></p>
+              <p>Address : <%= @quotation.address %></p> 
               <p>City : <%= @quotation.city %></p>
-              <p>State : <%= @quotation.state %></p> <p>Country : India.</p><p> PinCode : <%= @quotation.pincode %></p>
+              <p>State : <%= @quotation.state %></p>
+              <p>Country : India </p>
+              <p>PinCode : <%= @quotation.pincode %></p>
               <p>Phone : <%= @quotation.phone %> </p>
               <p>Date: <%= @quotation_date %></p>
             </td>
@@ -151,7 +152,7 @@ City : Ballari <br/>
               </h4>
             </th>
             <th style="width: 80px"><h4>Units</h4></th>
-            <th style="width: 80px"><h4>Unit <br> Price</h4></th>
+            <th style="width: 80px"><h4>Unit<br/>Price</h4></th>
             <th style="width: 80px">
               <h4>
                 QTY
@@ -168,7 +169,7 @@ City : Ballari <br/>
             <td> <%= item.width %></td>
             <td> <%= item.height %></td>
             <td><%= item.units %></td>
-             <td><%= item.price_per_unit %></td>
+            <td><%= item.price_per_unit %></td>
             <td><%= item.quantity %></td>
             <td><%= item.price %></td>
           </tr>
@@ -180,7 +181,7 @@ City : Ballari <br/>
       <table class="hm-p table-bordered" style="width: 100%; margin-top: 30px">
         <tr>
           <th style="width: 400px">
-            Total Items
+            Total Quantity
           </th>
           <td style="vertical-align: top; color: #000">
             <b><%= @total_units %></b>
@@ -193,28 +194,12 @@ City : Ballari <br/>
             <b><%= @total_area %></b>
           </td>
         </tr>
-         <tr>
-          <th style="width: 400px">
-            Advance
-          </th>
-          <td style="vertical-align: top; color: #000">
-            <b><%= @advance %></b>
-          </td>
-         </tr>
-          <tr>
-          <th style="width: 400px">
-            Balance
-          </th>
-          <td style="vertical-align: top; color: #000">
-            <b><%= @balance %></b>
-          </td>
-        </tr>
       </table>
 
       <table class="hm-p table-bordered" style="width: 100%; margin-top: 30px">
         <tr style="background: #fcbd02">
           <th>Total Order Value</th>
-          <td style="width: 150px; text-align: center; border-right: none">
+          <td style="width: 150px; text-align: right; border-right: none">
             <b><%= @total_amt %></b>
           </td>
           <td colspan="5" style="border-left: none"></td>
@@ -222,8 +207,15 @@ City : Ballari <br/>
       </table>
 
       <table style="width: 100%" cellspacing="0" cellspadding="0" border="0">
+        <tr>
           <td>
-            <h4 style="margin: 0; text-align: left">
+            <p>
+              This is computer generated Bill and hence signature is not
+              required
+            </p>
+          </td>
+          <td>
+            <h4 style="margin: 0; text-align: right">
               MRS Enterprises - LLP
             </h4>
           </td>
